@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .day-tint {
+    background-color: rgb(167, 166, 166);
+    background-blend-mode: multiply;
+  }
+}

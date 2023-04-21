@@ -11,7 +11,13 @@ export default {
       },
       backgroundImage: {
         refresh: "url(/desktop/icon-refresh.svg)",
+        daySmall: "url(/mobile/bg-image-daytime.jpg)",
+        nightSmall: "url(/mobile/bg-image-nighttime.jpg)",
       },
+      fontSize: {
+        custom: "	0.9375rem",
+      },
+      lineHeight: { custom: "1.75rem" },
     },
   },
   plugins: [],
