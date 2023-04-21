@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import "./App.css";
+import Time from "./components/Time";
+import Quote from "./components/Quote";
 
 const App = () => {
-  return <div className=""></div>;
+  return (
+    <main>
+      <Quote />
+      <Time />
+    </main>
+  );
 };
 
 export default App;
