@@ -10,8 +10,24 @@
 
 .night {
   background-image: url(/mobile/bg-image-nighttime.jpg);
+
+  @include u.breakpoint(medium) {
+    background-image: url(/tablet/bg-image-nighttime.jpg);
+  }
+
+  @include u.breakpoint(large) {
+    background-image: url(/desktop/bg-image-nighttime.jpg);
+  }
 }
 
 .day {
   background-image: url(/mobile/bg-image-daytime.jpg);
+
+  @include u.breakpoint(medium) {
+    background-image: url(/tablet/bg-image-daytime.jpg);
+  }
+
+  @include u.breakpoint(large) {
+    background-image: url(/desktop/bg-image-daytime.jpg);
+  }
 }

@@ -8,11 +8,19 @@
   padding-block-start: u.rem(32);
   padding-inline: u.rem(26);
 
+  @include u.breakpoint(medium) {
+    padding: u.rem(80) u.rem(131) u.rem(0) u.rem(64);
+  }
+
   &__text {
     font-weight: 400;
     font-size: u.rem(12);
     line-height: u.rem(22);
     padding-inline-end: u.rem(16);
+    @include u.breakpoint(medium) {
+      font-size: u.rem(18);
+      line-height: u.rem(28);
+    }
   }
 
   &__author {
@@ -20,6 +28,12 @@
     font-size: u.rem(12);
     line-height: u.rem(22);
     margin-block-start: u.rem(8);
+
+    @include u.breakpoint(medium) {
+      font-size: u.rem(18);
+      line-height: u.rem(28);
+      margin-block-start: u.rem(13);
+    }
   }
 
   &__refresh {
@@ -28,5 +42,9 @@
     background-size: contain;
     background-color: transparent;
     border: none;
+
+    @include u.breakpoint(medium) {
+      margin-block-start: u.rem(6);
+    }
   }
 }

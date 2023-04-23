@@ -10,10 +10,19 @@
   padding-inline: u.rem(26);
   color: var(--white);
 
+  @include u.breakpoint(medium) {
+    bottom: u.rem(64);
+    padding-inline: u.rem(64);
+  }
+
   .greeting {
     display: flex;
     align-items: center;
     gap: u.rem(16);
+
+    @include u.breakpoint(medium) {
+      gap: u.rem(17.6);
+    }
 
     &__text {
       font-weight: 400;
@@ -21,6 +30,16 @@
       line-height: u.rem(26);
       text-transform: uppercase;
       letter-spacing: u.rem(3);
+
+      @include u.breakpoint(medium) {
+        font-size: u.rem(18);
+        line-height: u.rem(28);
+        letter-spacing: u.rem(3.6);
+
+        &::after {
+          content: ", it's currently";
+        }
+      }
     }
   }
 
@@ -29,12 +48,21 @@
     align-items: flex-end;
     margin-block-start: u.rem(16);
 
+    @include u.breakpoint(medium) {
+      margin: 0;
+    }
+
     &__text {
       font-weight: 700;
       font-size: u.rem(100);
       line-height: 1;
-      letter-spacing: -2.5px;
+      letter-spacing: u.rem(-2.5);
       color: var(--white);
+
+      @include u.breakpoint(medium) {
+        font-size: u.rem(175);
+        letter-spacing: u.rem(-4.375);
+      }
     }
 
     &__abb {
@@ -43,6 +71,12 @@
       line-height: u.rem(28);
       margin-block-end: u.rem(5);
       margin-inline-start: u.rem(5);
+
+      @include u.breakpoint(medium) {
+        font-size: u.rem(32);
+        margin-block-end: u.rem(17);
+        margin-inline-start: u.rem(12);
+      }
     }
   }
 
@@ -54,6 +88,11 @@
     text-transform: uppercase;
     margin-block-start: u.rem(16);
     color: var(--white);
+
+    @include u.breakpoint(medium) {
+      font-size: u.rem(18);
+      letter-spacing: u.rem(3.6);
+    }
   }
 
   .button {
@@ -77,6 +116,14 @@
 
     &--clicked {
       background-image: url(/desktop/icon-arrow-up.svg);
+    }
+
+    @include u.breakpoint(medium) {
+      padding: u.rem(15) u.rem(62) u.rem(13) u.rem(21);
+      font-size: u.rem(16);
+      line-height: u.rem(28);
+      background-position: top 8px right 9px;
+      background-size: 40px 40px;
     }
   }
 }
