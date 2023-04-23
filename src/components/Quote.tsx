@@ -20,13 +20,13 @@ const Quote = () => {
   }, []);
 
   return (
-    <div className=" ">
+    <div className="quote">
       <div>
-        <p className="">{quote}</p>
-        <p className="">{author}</p>
+        <p className="quote__text">{quote}</p>
+        <p className="quote__author">{author}</p>
       </div>
       <button
-        className=""
+        className="quote__refresh"
         type="button"
         aria-label="Get new quote"
         onClick={() => fetchQuote()}

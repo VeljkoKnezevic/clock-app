@@ -1,0 +1,17 @@
+@use "../utils/" as u;
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+}
+
+.night {
+  background-image: url(/mobile/bg-image-nighttime.jpg);
+}
+
+.day {
+  background-image: url(/mobile/bg-image-daytime.jpg);
+}

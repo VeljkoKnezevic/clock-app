@@ -1,0 +1,32 @@
+@use "../utils/" as u;
+
+.quote {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-block-start: u.rem(32);
+  padding-inline: u.rem(26);
+
+  &__text {
+    font-weight: 400;
+    font-size: u.rem(12);
+    line-height: u.rem(22);
+    padding-inline-end: u.rem(16);
+  }
+
+  &__author {
+    font-weight: 700;
+    font-size: u.rem(12);
+    line-height: u.rem(22);
+    margin-block-start: u.rem(8);
+  }
+
+  &__refresh {
+    padding: u.rem(8);
+    background-image: url(/desktop/icon-refresh.svg);
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+  }
+}

@@ -63,9 +63,10 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
   }, []);
 
   return (
-    <div className="">
-      <div className="">
+    <div className="time">
+      <div className="greeting">
         <img
+          className="greeting__image"
           src={
             greeting === "Evening"
               ? "/desktop/icon-moon.svg"
@@ -73,10 +74,10 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
           }
           alt={greeting === "Evening" ? "Moon" : "Sun"}
         />
-        <p className="">Good {doneLoading && greeting}</p>
+        <p className="greeting__text">Good {doneLoading && greeting}</p>
       </div>
-      <div className="">
-        <p className=" ">
+      <div className="clock">
+        <p className="clock__text">
           {currentTime
             ? `${
                 currentTime.getHours() < 10
@@ -89,10 +90,12 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
               } `
             : ""}
         </p>
-        <p className="">{abbreviation}</p>
+        <p className="clock__abb">{abbreviation}</p>
       </div>
-      <p className="">in London, uk</p>
-      <button type="button">More</button>
+      <p className="location">in London, uk</p>
+      <button className="button" type="button">
+        More
+      </button>
     </div>
   );
 };

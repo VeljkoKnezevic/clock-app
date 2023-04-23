@@ -1,0 +1,74 @@
+@use "../utils/" as u;
+
+.time {
+  position: absolute;
+  bottom: u.rem(40);
+  padding-inline: u.rem(26);
+  color: var(--white);
+
+  .greeting {
+    display: flex;
+    align-items: center;
+    gap: u.rem(16);
+
+    &__text {
+      font-weight: 400;
+      font-size: u.rem(15);
+      line-height: u.rem(26);
+      text-transform: uppercase;
+      letter-spacing: u.rem(3);
+    }
+  }
+
+  .clock {
+    display: flex;
+    align-items: flex-end;
+    margin-block-start: u.rem(16);
+
+    &__text {
+      font-weight: 700;
+      font-size: u.rem(100);
+      line-height: 1;
+      letter-spacing: -2.5px;
+      color: var(--white);
+    }
+
+    &__abb {
+      font-weight: 300;
+      font-size: u.rem(15);
+      line-height: u.rem(28);
+      margin-block-end: u.rem(5);
+      margin-inline-start: u.rem(5);
+    }
+  }
+
+  .location {
+    font-weight: 700;
+    font-size: u.rem(15);
+    line-height: u.rem(28);
+    letter-spacing: u.rem(3);
+    text-transform: uppercase;
+    margin-block-start: u.rem(16);
+    color: var(--white);
+  }
+
+  .button {
+    background-image: url(/desktop/icon-arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: top 3px right 4px;
+    background-size: 32px 32px;
+    background-color: var(--white);
+    border-radius: 28px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: u.rem(12);
+    line-height: u.rem(14);
+    letter-spacing: u.rem(3.75);
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    padding: u.rem(13) u.rem(51) u.rem(12) u.rem(17);
+    border: none;
+    margin-block-start: u.rem(48);
+  }
+}
