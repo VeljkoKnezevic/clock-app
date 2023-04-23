@@ -1,7 +1,1 @@
-// eslint-disable-next-line import/prefer-default-export
-export enum GreetingEnum {
-  empty = "",
-  morning = " Morning",
-  afternoon = "Afternoon",
-  evening = " Evening",
-}
+export type Greeting = "" | "Morning" | "Afternoon" | "Evening";

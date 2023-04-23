@@ -1,9 +1,9 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { GreetingEnum } from "../GreetingEnum";
+import { Greeting } from "../GreetingEnum";
 
 type TimeProps = {
-  greeting: GreetingEnum;
-  setGreeting: React.Dispatch<SetStateAction<GreetingEnum>>;
+  greeting: Greeting;
+  setGreeting: React.Dispatch<SetStateAction<Greeting>>;
 };
 
 const Time = ({ greeting, setGreeting }: TimeProps) => {
@@ -18,11 +18,11 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
       const hours = currentTime.getHours();
 
       if (hours >= 5 && hours < 12) {
-        setGreeting(GreetingEnum.morning);
+        setGreeting("Morning");
       } else if (hours >= 12 && hours < 18) {
-        setGreeting(GreetingEnum.afternoon);
+        setGreeting("Afternoon");
       } else {
-        setGreeting(GreetingEnum.evening);
+        setGreeting("Evening");
       }
     }
   }, [doneLoading]);
@@ -63,22 +63,20 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
   }, []);
 
   return (
-    <div className="ml-[26px] mt-[226px] tracking-[3px] text-white">
-      <div className="flex items-center gap-4">
+    <div className="">
+      <div className="">
         <img
           src={
-            greeting === GreetingEnum.evening
+            greeting === "Evening"
               ? "/desktop/icon-moon.svg"
               : "/desktop/icon-sun.svg"
           }
-          alt={greeting === GreetingEnum.evening ? "Moon" : "Sun"}
+          alt={greeting === "Evening" ? "Moon" : "Sun"}
         />
-        <p className="text-custom font-normal uppercase leading-custom">
-          Good {doneLoading && greeting}
-        </p>
+        <p className="">Good {doneLoading && greeting}</p>
       </div>
-      <div className="mt-4 flex items-end">
-        <p className=" text-[100px]/none font-bold tracking-[-2.5px]">
+      <div className="">
+        <p className=" ">
           {currentTime
             ? `${
                 currentTime.getHours() < 10
@@ -91,13 +89,9 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
               } `
             : ""}
         </p>
-        <p className="mb-2 ml-1 text-custom font-light leading-custom">
-          {abbreviation}
-        </p>
+        <p className="">{abbreviation}</p>
       </div>
-      <p className="mt-4 text-custom font-bold uppercase leading-custom tracking-[3px]">
-        in London, uk
-      </p>
+      <p className="">in London, uk</p>
       <button type="button">More</button>
     </div>
   );

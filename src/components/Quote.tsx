@@ -20,13 +20,13 @@ const Quote = () => {
   }, []);
 
   return (
-    <div className=" flex justify-between px-[26px] pt-8">
+    <div className=" ">
       <div>
-        <p className="pr-4 text-xs text-white">{quote}</p>
-        <p className="mt-2 text-xs font-bold text-white">{author}</p>
+        <p className="">{quote}</p>
+        <p className="">{author}</p>
       </div>
       <button
-        className="bg-refresh bg-no-repeat p-3"
+        className=""
         type="button"
         aria-label="Get new quote"
         onClick={() => fetchQuote()}
