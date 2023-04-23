@@ -1,5 +1,9 @@
 @use "../utils/" as u;
 
+.clicked {
+  top: u.rem(100);
+}
+
 .time {
   position: absolute;
   bottom: u.rem(40);
@@ -70,5 +74,9 @@
     padding: u.rem(13) u.rem(51) u.rem(12) u.rem(17);
     border: none;
     margin-block-start: u.rem(48);
+
+    &--clicked {
+      background-image: url(/desktop/icon-arrow-up.svg);
+    }
   }
 }

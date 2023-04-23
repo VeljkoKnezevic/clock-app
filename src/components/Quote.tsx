@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const Quote = () => {
+type QuoteProps = {
+  clicked: boolean;
+};
+
+const Quote = ({ clicked }: QuoteProps) => {
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
   const fetchQuote = async () => {
@@ -21,16 +25,20 @@ const Quote = () => {
 
   return (
     <div className="quote">
-      <div>
-        <p className="quote__text">{quote}</p>
-        <p className="quote__author">{author}</p>
-      </div>
-      <button
-        className="quote__refresh"
-        type="button"
-        aria-label="Get new quote"
-        onClick={() => fetchQuote()}
-      ></button>
+      {!clicked && (
+        <>
+          <div>
+            <p className="quote__text">{quote}</p>
+            <p className="quote__author">{author}</p>
+          </div>
+          <button
+            className="quote__refresh"
+            type="button"
+            aria-label="Get new quote"
+            onClick={() => fetchQuote()}
+          ></button>
+        </>
+      )}
     </div>
   );
 };

@@ -4,14 +4,32 @@ import { Greeting } from "../GreetingEnum";
 type TimeProps = {
   greeting: Greeting;
   setGreeting: React.Dispatch<SetStateAction<Greeting>>;
+  clicked: boolean;
+  setClicked: React.Dispatch<SetStateAction<boolean>>;
+  setTimezone: React.Dispatch<SetStateAction<string>>;
+  setWeekNumber: React.Dispatch<SetStateAction<number>>;
+  setDayOfTheWeek: React.Dispatch<SetStateAction<number>>;
+  setDayOfTheYear: React.Dispatch<SetStateAction<number>>;
 };
 
-const Time = ({ greeting, setGreeting }: TimeProps) => {
-  const [doneLoading, setDoneLoading] = useState<boolean>(false);
+const Time = ({
+  greeting,
+  setGreeting,
+  clicked,
+  setClicked,
+  setDayOfTheWeek,
+  setDayOfTheYear,
+  setTimezone,
+  setWeekNumber,
+}: TimeProps) => {
+  // Time api
+  const [doneLoading, setDoneLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState<Date>();
-  const [abbreviation, setAbbreviation] = useState<string>("");
-  const [city, setCity] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
+  const [abbreviation, setAbbreviation] = useState("");
+  // Ip api
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  // Popup Info
 
   useEffect(() => {
     if (currentTime) {
@@ -35,6 +53,11 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
 
         setCurrentTime(new Date(data.datetime));
         setAbbreviation(data.abbreviation);
+        setTimezone(data.timezone);
+        setDayOfTheYear(data.day_of_year);
+        setDayOfTheWeek(data.day_of_week);
+        setWeekNumber(data.week_number);
+
         setDoneLoading(true);
       } catch (err) {
         // eslint-disable-next-line no-console
@@ -63,7 +86,7 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
   }, []);
 
   return (
-    <div className="time">
+    <div className={`time  ${clicked ? "clicked" : ""}`}>
       <div className="greeting">
         <img
           className="greeting__image"
@@ -93,8 +116,12 @@ const Time = ({ greeting, setGreeting }: TimeProps) => {
         <p className="clock__abb">{abbreviation}</p>
       </div>
       <p className="location">in London, uk</p>
-      <button className="button" type="button">
-        More
+      <button
+        onClick={() => setClicked(!clicked)}
+        className={`button ${clicked ? "button--clicked" : ""}`}
+        type="button"
+      >
+        {clicked ? "less" : "more"}
       </button>
     </div>
   );

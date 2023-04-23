@@ -1,0 +1,48 @@
+@use "../utils/" as u;
+
+.popup {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  padding: u.rem(48) u.rem(26);
+
+  &--night {
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
+  }
+
+  &--day {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20.3871px);
+    color: var(--grey);
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__section + &__section {
+    margin-block-start: u.rem(16);
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: u.rem(10);
+    line-height: u.rem(28);
+    letter-spacing: u.rem(2);
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  &__var {
+    font-weight: 700;
+    font-size: u.rem(20);
+    line-height: u.rem(24);
+    text-align: right;
+    color: var(--white);
+  }
+}
