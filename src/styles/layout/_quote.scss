@@ -12,6 +12,11 @@
     padding: u.rem(80) u.rem(131) u.rem(0) u.rem(64);
   }
 
+  @include u.breakpoint(xlarge) {
+    padding: u.rem(56) u.rem(0) u.rem(0) u.rem(165);
+    width: u.rem(739);
+  }
+
   &__text {
     font-weight: 400;
     font-size: u.rem(12);

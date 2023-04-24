@@ -2,6 +2,10 @@
 
 .clicked {
   top: u.rem(100);
+
+  @include u.breakpoint(xlarge) {
+    top: u.rem(56);
+  }
 }
 
 .time {
@@ -13,6 +17,19 @@
   @include u.breakpoint(medium) {
     bottom: u.rem(64);
     padding-inline: u.rem(64);
+  }
+
+  @include u.breakpoint(large) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    padding-inline: u.rem(165);
+    bottom: u.rem(98);
+    max-width: u.rem(1443);
+    left: 50%;
+    transform: translate(-50%);
   }
 
   .greeting {
@@ -40,6 +57,10 @@
           content: ", it's currently";
         }
       }
+
+      @include u.breakpoint(xlarge) {
+        font-size: u.rem(20);
+      }
     }
   }
 
@@ -63,6 +84,10 @@
         font-size: u.rem(175);
         letter-spacing: u.rem(-4.375);
       }
+      @include u.breakpoint(xlarge) {
+        font-size: u.rem(200);
+        letter-spacing: u.rem(-5);
+      }
     }
 
     &__abb {
@@ -76,6 +101,12 @@
         font-size: u.rem(32);
         margin-block-end: u.rem(17);
         margin-inline-start: u.rem(12);
+      }
+
+      @include u.breakpoint(xlarge) {
+        font-size: u.rem(40);
+        margin-block-end: u.rem(25);
+        margin-inline-start: u.rem(11);
       }
     }
   }
@@ -92,6 +123,11 @@
     @include u.breakpoint(medium) {
       font-size: u.rem(18);
       letter-spacing: u.rem(3.6);
+    }
+
+    @include u.breakpoint(xlarge) {
+      font-size: u.rem(24);
+      letter-spacing: u.rem(4.8);
     }
   }
 

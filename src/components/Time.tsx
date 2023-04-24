@@ -87,35 +87,37 @@ const Time = ({
 
   return (
     <div className={`time  ${clicked ? "clicked" : ""}`}>
-      <div className="greeting">
-        <img
-          className="greeting__image"
-          src={
-            greeting === "Evening"
-              ? "/desktop/icon-moon.svg"
-              : "/desktop/icon-sun.svg"
-          }
-          alt={greeting === "Evening" ? "Moon" : "Sun"}
-        />
-        <p className="greeting__text">Good {doneLoading && greeting}</p>
+      <div>
+        <div className="greeting">
+          <img
+            className="greeting__image"
+            src={
+              greeting === "Evening"
+                ? "/desktop/icon-moon.svg"
+                : "/desktop/icon-sun.svg"
+            }
+            alt={greeting === "Evening" ? "Moon" : "Sun"}
+          />
+          <p className="greeting__text">Good {doneLoading && greeting}</p>
+        </div>
+        <div className="clock">
+          <p className="clock__text">
+            {currentTime
+              ? `${
+                  currentTime.getHours() < 10
+                    ? `0${currentTime.getHours()}`
+                    : currentTime.getHours()
+                }:${
+                  currentTime.getMinutes() < 10
+                    ? `0${currentTime.getMinutes()}`
+                    : currentTime.getMinutes()
+                } `
+              : ""}
+          </p>
+          <p className="clock__abb">{abbreviation}</p>
+        </div>
+        <p className="location">in London, uk</p>
       </div>
-      <div className="clock">
-        <p className="clock__text">
-          {currentTime
-            ? `${
-                currentTime.getHours() < 10
-                  ? `0${currentTime.getHours()}`
-                  : currentTime.getHours()
-              }:${
-                currentTime.getMinutes() < 10
-                  ? `0${currentTime.getMinutes()}`
-                  : currentTime.getMinutes()
-              } `
-            : ""}
-        </p>
-        <p className="clock__abb">{abbreviation}</p>
-      </div>
-      <p className="location">in London, uk</p>
       <button
         onClick={() => setClicked(!clicked)}
         className={`button ${clicked ? "button--clicked" : ""}`}

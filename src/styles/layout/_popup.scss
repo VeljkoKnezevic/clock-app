@@ -16,6 +16,10 @@
     row-gap: u.rem(48);
   }
 
+  @include u.breakpoint(xlarge) {
+    padding: u.rem(74) u.rem(0) u.rem(74) u.rem(165);
+  }
+
   &--night {
     color: white;
     background: rgba(0, 0, 0, 0.75);
@@ -41,6 +45,19 @@
         grid-column: 2 / 3;
       }
     }
+
+    @include u.breakpoint(xlarge) {
+      &::after {
+        content: "";
+        position: absolute;
+        height: u.rem(252);
+        width: 1px;
+        opacity: 0.1;
+        background: grey;
+        top: u.rem(74);
+        right: calc(50% - 31px);
+      }
+    }
   }
 
   &__text {
@@ -55,6 +72,11 @@
       font-size: u.rem(13);
       letter-spacing: u.rem(2.6);
     }
+
+    @include u.breakpoint(xlarge) {
+      font-size: u.rem(15);
+      letter-spacing: u.rem(3);
+    }
   }
 
   &__var {
@@ -67,6 +89,11 @@
     @include u.breakpoint(medium) {
       font-size: u.rem(40);
       line-height: u.rem(48);
+    }
+    @include u.breakpoint(xlarge) {
+      font-size: u.rem(56);
+      line-height: u.rem(68);
+      margin-block-start: u.rem(9);
     }
   }
 }
