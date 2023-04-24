@@ -150,8 +150,18 @@
     border: none;
     margin-block-start: u.rem(48);
 
+    &:hover {
+      cursor: pointer;
+      background-image: url(/desktop/icon-arrow-down-hover.svg);
+    }
+
     &--clicked {
       background-image: url(/desktop/icon-arrow-up.svg);
+
+      &:hover {
+        cursor: pointer;
+        background-image: url(/desktop/icon-arrow-up-hover.svg);
+      }
     }
 
     @include u.breakpoint(medium) {
