@@ -1,4 +1,5 @@
 import { SetStateAction, useEffect, useState } from "react";
+import { TimeData } from "../FetchProps";
 import { Greeting } from "../GreetingEnum";
 
 type TimeProps = {
@@ -6,10 +7,8 @@ type TimeProps = {
   setGreeting: React.Dispatch<SetStateAction<Greeting>>;
   clicked: boolean;
   setClicked: React.Dispatch<SetStateAction<boolean>>;
-  setTimezone: React.Dispatch<SetStateAction<string>>;
-  setWeekNumber: React.Dispatch<SetStateAction<number>>;
-  setDayOfTheWeek: React.Dispatch<SetStateAction<number>>;
-  setDayOfTheYear: React.Dispatch<SetStateAction<number>>;
+  timeData: TimeData | undefined;
+  setTimeData: React.Dispatch<SetStateAction<TimeData | undefined>>;
 };
 
 const Time = ({
@@ -17,19 +16,13 @@ const Time = ({
   setGreeting,
   clicked,
   setClicked,
-  setDayOfTheWeek,
-  setDayOfTheYear,
-  setTimezone,
-  setWeekNumber,
+  timeData,
+  setTimeData,
 }: TimeProps) => {
-  // Time api
   const [doneLoading, setDoneLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState<Date>();
-  const [abbreviation, setAbbreviation] = useState("");
-  // Ip api
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  // Popup Info
 
   useEffect(() => {
     if (currentTime) {
@@ -50,14 +43,8 @@ const Time = ({
       try {
         const response = await fetch("http://worldtimeapi.org/api/ip");
         const data = await response.json();
-
         setCurrentTime(new Date(data.datetime));
-        setAbbreviation(data.abbreviation);
-        setTimezone(data.timezone);
-        setDayOfTheYear(data.day_of_year);
-        setDayOfTheWeek(data.day_of_week);
-        setWeekNumber(data.week_number);
-
+        setTimeData(data);
         setDoneLoading(true);
       } catch (err) {
         // eslint-disable-next-line no-console
@@ -81,51 +68,60 @@ const Time = ({
       }
     };
 
-    // getIp();
+    getIp();
     getTime();
   }, []);
 
   return (
-    <div className={`time  ${clicked ? "clicked" : ""}`}>
-      <div>
-        <div className="greeting">
-          <img
-            className="greeting__image"
-            src={
-              greeting === "Evening"
-                ? "/desktop/icon-moon.svg"
-                : "/desktop/icon-sun.svg"
-            }
-            alt={greeting === "Evening" ? "Moon" : "Sun"}
-          />
-          <p className="greeting__text">Good {doneLoading && greeting}</p>
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {timeData ? (
+        <div className={`time  ${clicked ? "clicked" : ""}`}>
+          <div>
+            <div className="greeting">
+              <img
+                className="greeting__image"
+                src={
+                  greeting === "Evening"
+                    ? "/desktop/icon-moon.svg"
+                    : "/desktop/icon-sun.svg"
+                }
+                alt={greeting === "Evening" ? "Moon" : "Sun"}
+              />
+              <p className="greeting__text">Good {doneLoading && greeting}</p>
+            </div>
+            <div className="clock">
+              <p className="clock__text">
+                {currentTime
+                  ? `${
+                      currentTime.getHours() < 10
+                        ? `0${currentTime.getHours()}`
+                        : currentTime.getHours()
+                    }:${
+                      currentTime.getMinutes() < 10
+                        ? `0${currentTime.getMinutes()}`
+                        : currentTime.getMinutes()
+                    } `
+                  : ""}
+              </p>
+              <p className="clock__abb">{timeData.abbreviation}</p>
+            </div>
+            <p className="location">
+              in {city || "belgrade"}, {country || "srb"}
+            </p>
+          </div>
+          <button
+            onClick={() => setClicked(!clicked)}
+            className={`button ${clicked ? "button--clicked" : ""}`}
+            type="button"
+          >
+            {clicked ? "less" : "more"}
+          </button>
         </div>
-        <div className="clock">
-          <p className="clock__text">
-            {currentTime
-              ? `${
-                  currentTime.getHours() < 10
-                    ? `0${currentTime.getHours()}`
-                    : currentTime.getHours()
-                }:${
-                  currentTime.getMinutes() < 10
-                    ? `0${currentTime.getMinutes()}`
-                    : currentTime.getMinutes()
-                } `
-              : ""}
-          </p>
-          <p className="clock__abb">{abbreviation}</p>
-        </div>
-        <p className="location">in London, uk</p>
-      </div>
-      <button
-        onClick={() => setClicked(!clicked)}
-        className={`button ${clicked ? "button--clicked" : ""}`}
-        type="button"
-      >
-        {clicked ? "less" : "more"}
-      </button>
-    </div>
+      ) : (
+        <p>lol</p>
+      )}
+    </>
   );
 };
 

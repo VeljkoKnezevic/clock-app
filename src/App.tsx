@@ -4,14 +4,12 @@ import Quote from "./components/Quote";
 import { Greeting } from "./GreetingEnum";
 import "./styles/styles.scss";
 import Popup from "./components/Popup";
+import { TimeData } from "./FetchProps";
 
 const App = () => {
   const [greeting, setGreeting] = useState<Greeting>("");
   const [clicked, setClicked] = useState(false);
-  const [timezone, setTimezone] = useState("");
-  const [dayOfTheYear, setDayOfTheYear] = useState(0);
-  const [dayOfTheWeek, setDayOfTheWeek] = useState(0);
-  const [weekNumber, setWeekNumber] = useState(0);
+  const [timeData, setTimeData] = useState<TimeData>();
 
   return (
     <main className={`main ${greeting === "Evening" ? "night" : "day"}`}>
@@ -21,22 +19,10 @@ const App = () => {
         setClicked={setClicked}
         greeting={greeting}
         setGreeting={setGreeting}
-        setTimezone={setTimezone}
-        setDayOfTheYear={setDayOfTheYear}
-        setDayOfTheWeek={setDayOfTheWeek}
-        setWeekNumber={setWeekNumber}
+        setTimeData={setTimeData}
+        timeData={timeData}
       />
-      {clicked ? (
-        <Popup
-          greeting={greeting}
-          timezone={timezone}
-          dayOfTheYear={dayOfTheYear}
-          dayOfTheWeek={dayOfTheWeek}
-          weekNumber={weekNumber}
-        />
-      ) : (
-        ""
-      )}
+      {clicked ? <Popup greeting={greeting} timeData={timeData} /> : ""}
     </main>
   );
 };
